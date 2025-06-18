@@ -3,5 +3,14 @@
 		{
 			"path": "../.."
 		}
-	]
+	],
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"espressif.esp-idf-extension",
+			"platformio.platformio-ide",
+			"ms-vscode.cmake-tools",
+			"ms-python.python"
+		]
+	}
 }

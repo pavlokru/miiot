@@ -6,12 +6,28 @@ const char* password = "CONTRASEÑA_DE_TU_WIFI";
 
 WebServer server(80);
 
+const int ledPin = 2; // Pin del LED integrado
+
 void handleRoot() {
-  server.send(200, "text/html", "<h1>¡Hola desde ESP32!</h1>");
+  String html = "<h1>¡Hola desde ESP32!</h1>";
+  html += "<p><a href='/on'><button>Encender LED</button></a></p>";
+  html += "<p><a href='/off'><button>Apagar LED</button></a></p>";
+  server.send(200, "text/html", html);
+}
+
+void handleLedOn() {
+  digitalWrite(ledPin, HIGH);
+  server.send(200, "text/html", "<h1>LED ENCENDIDO</h1><a href='/'>Volver</a>");
+}
+
+void handleLedOff() {
+  digitalWrite(ledPin, LOW);
+  server.send(200, "text/html", "<h1>LED APAGADO</h1><a href='/'>Volver</a>");
 }
 
 void setup() {
   Serial.begin(115200);
+  pinMode(ledPin, OUTPUT);
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
@@ -23,6 +39,8 @@ void setup() {
   Serial.println(WiFi.localIP());
 
   server.on("/", handleRoot);
+  server.on("/on", handleLedOn);
+  server.on("/off", handleLedOff);
   server.begin();
 }
 
