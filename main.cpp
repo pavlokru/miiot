@@ -6,7 +6,7 @@ const char* password = "CONTRASEÑA_DE_TU_WIFI";
 
 WebServer server(80);
 
-const int ledPin = 2; // Pin del LED integrado
+const int ledPin = 3; // Pin del LED integrado
 
 void handleRoot() {
   String html = "<h1>¡Hola desde ESP32!</h1>";
