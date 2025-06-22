@@ -18,8 +18,7 @@ void handleRoot() {
 void handleLedOn() {
   digitalWrite(ledPin, HIGH);
   server.send(200, "text/html", "<h1>LED ENCENDIDO</h1><a href='/'>Volver</a>");
-}
-
+}//sigo probando
 void handleLedOff() {
   digitalWrite(ledPin, LOW);
   server.send(200, "text/html", "<h1>LED APAGADO</h1><a href='/'>Volver</a>");
