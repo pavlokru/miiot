@@ -9,7 +9,7 @@ WebServer server(80);
 const int ledPin = 3; // Pin del LED integrado
 
 void handleRoot() {
-String html = "<h1>¡Hola desde la NUEVA RAMA-2!</h1>";  html += "<p><a href='/on'><button>Encender LED</button></a></p>";
+String html = "<h1>¡Hola este e un nueevo cambio!</h1>";  html += "<p><a href='/on'><button>Encender LED</button></a></p>";
   html += "<p><a href='/off'><button>Apagar LED</button></a></p>";
   server.send(200, "text/html", html);
 }
