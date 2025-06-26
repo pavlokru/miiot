@@ -6,14 +6,19 @@ const char* password = "CONTRASEÑA_DE_TU_WIFI";
 // Este código es un ejemplo de un servidor web simple en ESP32 que controla un LED integrado. 
 WebServer server(80);
 
+
 const int ledPin = 3; // Pin del LED integrado
+int contadorVisitas = 0; // Variable para contar visitas
 
 void handleRoot() {
-String html = "<h1>¡Hola este e un nueevo cambio!</h1>";  html += "<p><a href='/on'><button>Encender LED</button></a></p>";
+  contadorVisitas++;
+  String html = "<h1>¡Hola desde ESP32!</h1>";
+  html += "<p>Visitas a esta página: " + String(contadorVisitas) + "</p>";
+  html += "<p><a href='/on'><button>Encender LED</button></a></p>";
   html += "<p><a href='/off'><button>Apagar LED</button></a></p>";
+  // ...agrega aquí los botones de otros LEDs si tienes...
   server.send(200, "text/html", html);
 }
-
 void handleLedOn() {
   digitalWrite(ledPin, HIGH);
   server.send(200, "text/html", "<h1>LED ENCENDIDO</h1><a href='/'>Volver</a>");
