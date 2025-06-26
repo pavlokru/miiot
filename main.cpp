@@ -3,7 +3,7 @@
 
 const char* ssid = "NOMBRE_DE_TU_WIFI";
 const char* password = "CONTRASEÑA_DE_TU_WIFI";
-
+// Este código es un ejemplo de un servidor web simple en ESP32 que controla un LED integrado. 
 WebServer server(80);
 
 const int ledPin = 3; // Pin del LED integrado
